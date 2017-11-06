@@ -1,7 +1,7 @@
 ---
 galaxy_info:
-  author: Wawrzyniec (Wawrzek) Niewodniczański
-  description: Simple Corda DLT installer
+  author: Benjamin Abineri
+  description: Corda
   company: "R3"
   license: "Apache License, Version 2.0"
   min_ansible_version: 2.2
