@@ -8,13 +8,10 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-      - 16.04
-    - name: CentOS
-      versions:
-      - 7
+      - xenial
   galaxy_tags:
     - R3
-    - distributed ledger
+    - DLT
     - fintech
     - installer
     - java
