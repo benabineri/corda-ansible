@@ -7,7 +7,7 @@ emailAddress : "{{ corda_admin_email }}"
 myLegalName : "O={{ corda_org }}, L={{ corda_city }}, C={{ corda_country }}"
 keyStorePassword : "cordacadevpass"
 trustStorePassword : "trustpass"
-{% if corda_role == "notary" %}
+{% if corda_role == "notary" or corda_role == "controller" %}
 {% if corda_notary_type == "validating" %}
 extraAdvertisedServiceIds: [ "corda.notary.validating" ]
 {% elif corda_notary_type == "non_validating" %}
@@ -18,20 +18,20 @@ extraAdvertisedServiceIds: [ "" ]
 {% endif %}
 useHTTPS : false
 devMode : {{ corda_devmode }}
-{% if corda_role != "networkmap" %}
+{% if corda_role != "networkmap" and corda_role != "controller" %}
 networkMapService {
-	address="{{ corda_networkmap_address }}:{{ corda_port_p2p }}"
-	legalName="{{ corda_networkmap_name }}"
+    address="{{ corda_networkmap_address }}:{{ corda_port_p2p }}"
+    legalName="{{ corda_networkmap_name }}"
 }
 {% endif %}
 rpcUsers=[
-	{
-		user={{ corda_portal_user }}
-		password={{ corda_portal_password }}
-		permissions=[
-			ALL
-		]
-	}
+    {
+        user={{ corda_portal_user }}
+        password={{ corda_portal_password }}
+        permissions=[
+            ALL
+        ]
+    }
 ]
 {% if not corda_devmode | bool %}
 certificateSigningService="{{ corda_doorman_url }}"
